@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美國yahoo股市api一個月走勢</title>
+    <link rel="shortcut icon" href="/" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text-center">美國yahoo股市api一個月走勢</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="aa row">
+            <div class="col-4 mvAMD">
+                <canvas id='AMD' class="t" style="position:relative;"></canvas>
+            </div>
+            <div class="col-4 mvTSLA">
+                <canvas id='TSLA' class="t" style="position:relative;"></canvas>
+            </div>
+            <div class="col-4 mvFB">
+                <canvas id='FB' class="t" style="position:relative;"></canvas>
+            </div>
+        </div>
+            <div>
+                <div id="big" class="col-8" style="margin: auto;">
+                    <canvas id='AMDa' class="b" style="position:relative;"></canvas>
+                </div>
+            </div>
+    </div>
+    <div class="container-fluid mt-5">
+        <table id="table_id" class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>成交量</th>
+                    <th>開盤價</th>
+                    <th>收盤價</th>
+                    <th>最高點</th>
+                    <th>最低點</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+
+</html>
+
+<!-- 先載入 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+    crossorigin="anonymous"></script>
+
+<!-- datatable -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+
+<!-- chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+    integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- API -->
+<script>
+    // stock = ['AMD', 'TSLA', 'FB'];
+    // console.log(stock['AMD'])
+    // AMD
+
+    const AMD = {
+        'name': "AMD",
+        'ctx': document.getElementById("AMD"),
+        "async": true,
+        "crossDomain": true,
+        "url": "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/AMD?range=1mo&region=us&events=div%2Csplit&interval=1d",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
+            "x-rapidapi-key": "453c854600mshdd724143595b027p151078jsnb3b594983dbd"
+        }
+    };
+
+    // 特斯拉
+    const TSLA = {
+        'name': "TSLA",
+        "ctx": document.getElementById("TSLA"),
+        "async": true,
+        "crossDomain": true,
+        "url": "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/TSLA?range=1mo&region=us&events=div%2Csplit&interval=1d",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
+            "x-rapidapi-key": "453c854600mshdd724143595b027p151078jsnb3b594983dbd"
+        }
+    };
+
+    // 臉書
+    const FB = {
+        'name': "FB",
+        'ctx': document.getElementById("FB"),
+        "async": true,
+        "crossDomain": true,
+        "url": "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/FB?range=1mo&region=us&events=div%2Csplit&interval=1d",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
+            "x-rapidapi-key": "453c854600mshdd724143595b027p151078jsnb3b594983dbd"
+        }
+    };
+    // AMD大圖
+    const AMDa = {
+        'name': "AMDa",
+        'ctx': document.getElementById("AMDa"),
+        "async": true,
+        "crossDomain": true,
+        "url": "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/AMD?range=1mo&region=us&events=div%2Csplit&interval=1d",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
+            "x-rapidapi-key": "453c854600mshdd724143595b027p151078jsnb3b594983dbd"
+        }
+    };
+
+    // 特斯拉大圖
+    const TSLAa = {
+        'name': "TSLAa",
+        "ctx": document.getElementById("TSLAa"),
+        "async": true,
+        "crossDomain": true,
+        "url": "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/TSLA?range=1mo&region=us&events=div%2Csplit&interval=1d",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
+            "x-rapidapi-key": "453c854600mshdd724143595b027p151078jsnb3b594983dbd"
+        }
+    };
+
+    // 臉書大圖
+    const FBa = {
+        'name': "FBa",
+        'ctx': document.getElementById("FBa"),
+        "async": true,
+        "crossDomain": true,
+        "url": "https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v8/finance/chart/FB?range=1mo&region=us&events=div%2Csplit&interval=1d",
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "stock-data-yahoo-finance-alternative.p.rapidapi.com",
+            "x-rapidapi-key": "453c854600mshdd724143595b027p151078jsnb3b594983dbd"
+        }
+    };
+
+
+    let charts = {}
+    function mychart(stock) {
+        $.ajax(stock).done(function (response) {
+            let time = response.chart.result[0].timestamp;
+            let volume = response.chart.result[0].indicators.quote[0].volume;
+            let open = response.chart.result[0].indicators.quote[0].open;
+            let close = response.chart.result[0].indicators.quote[0].close;
+            let high = response.chart.result[0].indicators.quote[0].high;
+            let low = response.chart.result[0].indicators.quote[0].low;
+
+            time = time.map(asd => {
+                asd = new Date(asd * 1000)
+                let dd = asd.getFullYear() +
+                    "/" + (asd.getMonth() + 1) +
+                    "/" + asd.getDate()
+                return dd
+            })
+
+            for (let i = 0; i < volume.length; i++) {
+                // console.log('volume123',volume[i])
+                $('tbody').append(`
+            <tr class='b t${stock.name}'>
+                <td>${time[i]}</td>
+                <td>${volume[i]}</td>
+                <td>${open[i]}</td>
+                <td>${close[i]}</td>
+                <td>${high[i]}</td>
+                <td>${low[i]}</td>
+            </tr>
+            `)
+            // $('#table_id').DataTable({
+            //     data: newDataStore,
+            //     columns: [
+            //         { data: 'time' },
+            //         { data: 'volume' },
+            //         { data: 'open' },
+            //         { data: 'name' },
+            //         { data: 'close' },
+            //         { data: 'high' },
+            //         { data: 'low' }
+            //     ]
+            // });
+        }
+        $('#table_id').DataTable();
+            charts[stock.name] = new Chart(stock.ctx, {
+                type: 'line',
+                data: {
+                    labels: time,
+                    datasets: [{
+                        label: stock.name,
+                        data: close,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+        return stock;
+    }
+
+
+
+    mychart(FB)
+    mychart(TSLA)
+    mychart(AMD)
+    mychart(AMDa)
+
+    $('.t').on('click', function (el) {
+        let tag = $(this).attr('id');
+        // 取big下面的元素id
+        let tag2 = $("#big").find("canvas").attr('id');
+        console.log(tag2)
+        // charts[tag2].destroy()
+        // 將big移到css"mvmychart"
+        // $('.mv'+tag2).append($('#big').find("canvas"))
+        // $("#big").remove();
+        // $("#big").html(`<canvas id='${tag}' class="t" style="position: relative; display: block; box-sizing: border-box; height: 401px; width: 802px;"></canvas>`)
+        // $("#big").hide();
+        $('.b').hide();
+        charts[tag2].destroy()
+        switch (tag) {
+            case "AMD":
+                $("#big").html(`<canvas id='AMDa' class="b" style="position:relative;"></canvas>`)
+                AMDa.ctx = document.getElementById("AMDa"),
+                    mychart(AMDa)
+                break;
+            case "TSLA":
+                $("#big").html(`<canvas id='TSLAa' class="b" style="position:relative;"></canvas>`)
+                TSLAa.ctx = document.getElementById("TSLAa")
+                mychart(TSLAa)
+                break;
+            case "FB":
+                $("#big").html(`<canvas id='FBa' class="b" style="position:relative;"></canvas>`)
+                FBa.ctx = document.getElementById("FBa")
+                mychart(FBa)
+                break;
+        }
+        // $("#big").append(mychart(tag))
+
+
+        // console.log(tag2)
+        // console.log(tag);
+        // $(".aa.row div").removeClass("col-4")
+        // $(".aa.row div").attr("display")
+        // $(".aa.row div").addClass("col-2")
+        // $(this).removeClass("col-2")
+
+        // $(this).addClass("col-8")
+        // 將big移到css"mvmychart"
+        // $('.mv'+tag2).append($('#big').find("canvas"))
+        // $('.mv'+tag2).removeClass("");
+        // $('.mv'+tag2).removeClass("margin");
+        // 將元素清空
+        // $("#big").empty()
+        // 點擊的char移動到big下面
+        // $("#big").append($(this))
+        // $(this).css('width','auto')
+        // $(this).css('height','555px')
+        //$(this).css('margin','auto')
+
+        $('.t' + tag).show();
+        // $('.' + tag + 'a').show();
+
+    })
+
+</script>
