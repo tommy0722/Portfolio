@@ -47,12 +47,18 @@
     <nav id="navbar" class="navbar nav-menu">
       <ul>
         <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>首頁</span></a></li>
+       
+        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>關於我</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>經歷</span></a></li>
+        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>作品集</span></a></li>
+        <!-- <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li> -->
+        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>聯絡我</span></a></li>
         <?php
         if (isset($_SESSION['admin'])) {
         ?>
-
-          <li><a href="./back.php" class="scroller" data-offset="-139">進入後台</a></li>
-          <button onclick="location.href='./api/logout.php'" class="btn btn-danger" style="float: right;">登出</button>
+          <li><a href="./back.php" class="nav-link scrollto"> <i class="bi bi-box-arrow-up-right"></i> <span>進入後台</span></a></li>
+          <li><a href="./api/logout.php'" class="nav-link scrollto"><i class="bi bi-box-arrow-left "></i><span>登出</span></a></li>
+          <!-- <button onclick="location.href='./api/logout.php'" class="btn btn-danger" style="float: right;">登出</button> -->
         <?php
         } else {
         ?>
@@ -62,11 +68,6 @@
         }
 
         ?>
-        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>關於我</span></a></li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>經歷</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>作品集</span></a></li>
-        <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>聯絡我</span></a></li>
       </ul>
     </nav><!-- .nav-menu -->
 
@@ -100,7 +101,7 @@
 
         <div class="row">
           <div class="col-lg-4">
-            <img src="assets/img/me.png" style="max-width: 60%;height: auto;" alt="">
+            <img src="assets/img/me2.png" style="max-width: 60%;height: auto;" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
             <!-- <h3>UI/UX Designer &amp; Web Developer.</h3> -->
@@ -111,17 +112,17 @@
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>生日:</strong> <span>1993/7/22</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>生日:</strong> <span><?= $Abme->find(1)['bir'] ?></span></li>
                   <!-- <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li> -->
-                  <li><i class="bi bi-chevron-right"></i> <strong>電話:</strong> <span>0987654321</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>居住地:</strong> <span>台北市北投區</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>電話:</strong> <span><?= $Abme->find(1)['tel'] ?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>居住地:</strong> <span><?= $Abme->find(1)['local'] ?></span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>年紀:</strong> <span>29</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>程度:</strong> <span>大學</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>email:</strong> <span>t40201@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>年紀:</strong> <span><?= birthday($Abme->find(1)['bir'] )?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>程度:</strong> <span><?= $Abme->find(1)['stu'] ?></span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>email:</strong> <span><?= $Abme->find(1)['email'] ?></span></li>
                   <!-- <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li> -->
                 </ul>
               </div>
@@ -362,7 +363,7 @@
           foreach ($rows as $row) {
           ?>
           
-          <div class="col-lg-4 col-md-6 portfolio-item filter-php">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-html">
             <div class="portfolio-wrap">
               <img src="./assets/img/hw/<?=$row['img']?>" class="img-fluid" alt="無法顯示圖片">
               <div class="portfolio-info">
@@ -384,7 +385,7 @@
           foreach ($rows as $row) {
           ?>
           
-          <div class="col-lg-4 col-md-6 portfolio-item filter-php">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-adobe">
             <div class="portfolio-wrap">
               <img src="./assets/img/hw/<?=$row['img']?>" class="img-fluid" alt="無法顯示圖片">
               <div class="portfolio-info">
@@ -672,8 +673,8 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <h3>Brandon Johnson</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+      <h3>SHIN</h3>
+      <p>個人網頁作品集</p>
       <div class="social-links">
         <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> -->
         <a href="https://www.facebook.com/t40201" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -681,15 +682,15 @@
         <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a> -->
         <a href="https://www.linkedin.com/in/%E8%AA%A0%E4%BF%A1-%E4%BD%95-436286217/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
-      <div class="copyright">
+      <!-- <div class="copyright">
         &copy; Copyright <strong><span>MyResume</span></strong>. All Rights Reserved
-      </div>
+      </div> -->
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: [license-url] -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
       </div>
     </div>
   </footer><!-- End Footer -->

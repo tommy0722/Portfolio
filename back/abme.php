@@ -1,16 +1,6 @@
 <?php include_once "base.php"; ?>
 
-<?php 
-function birthday($mydate){ 
-    $birth=$mydate; 
-    list($by,$bm,$bd)=explode('-',$birth); 
-    $cm=date('n'); 
-    $cd=date('j'); 
-    $age=date('Y')-$by-1; 
-    if ($cm>$bm || $cm==$bm && $cd>$bd) $age++; 
-    return $age; 
-} 
-?> 
+
 <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
 <body>
