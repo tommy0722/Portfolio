@@ -57,7 +57,7 @@
         if (isset($_SESSION['admin'])) {
         ?>
           <li><a href="./back.php" class="nav-link scrollto"> <i class="bi bi-box-arrow-up-right"></i> <span>進入後台</span></a></li>
-          <li><a href="./api/logout.php'" class="nav-link scrollto"><i class="bi bi-box-arrow-left "></i><span>登出</span></a></li>
+          <li><a href="./api/logout.php" class="nav-link scrollto"><i class="bi bi-box-arrow-left "></i><span>登出</span></a></li>
           <!-- <button onclick="location.href='./api/logout.php'" class="btn btn-danger" style="float: right;">登出</button> -->
         <?php
         } else {

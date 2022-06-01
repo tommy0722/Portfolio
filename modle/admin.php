@@ -1,7 +1,7 @@
 <div class="cent"><?=(isset($_GET['id']))?'更新':'新增'?>管理者帳號</div>
 <hr>
 <!-- <form action="/s1100414/api/manage.php" method="post" enctype="multipart/form-data"> -->
-<form action="/api/manage.php" method="post" enctype="multipart/form-data">
+<form action="api/manage.php" method="post" enctype="multipart/form-data">
 <table>
   <tr>
     <td>帳號：</td>

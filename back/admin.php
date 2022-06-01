@@ -32,7 +32,7 @@
                 <tbody>
                     <tr>
                         <!-- <td width="200px"><input type="button" onclick="op('#cover','#cvr','/s1100414/modle/admin.php')" value="新增管理者帳號"></td> -->
-                        <td width="200px"><input type="button" onclick="op('#cover','#cvr','/modle/admin.php')" value="新增管理者帳號"></td>
+                        <td width="200px"><input type="button" onclick="op('#cover','#cvr','./modle/admin.php')" value="新增管理者帳號"></td>
                         <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置"></td>
                     </tr>
                 </tbody>

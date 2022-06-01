@@ -68,7 +68,7 @@
                     <a href="?do=pro">作品管理</a>
                     <a href="?do=footer">頁尾管理</a>
                     <!-- <a href="/s1100414">前台管理</a> -->
-                    <a href="/">前台管理</a>
+                    <a href="./index.php">前台管理</a>
                 </div>
                 <div style="position: absolute;right:0;top:0;">
                     <a href="./api/logout.php"> <button class="bg-danger text-white">登出</button></a>

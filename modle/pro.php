@@ -2,7 +2,7 @@
 <div class="cent"><?= (isset($_GET['id'])) ? '編輯' : '新增' ?>作品集</div>
 <hr>
 <!-- <form action="/s1100414/api/manage.php" method="post" enctype="multipart/form-data"> -->
-<form action="/api/manage.php" method="post" enctype="multipart/form-data">
+<form action="api/manage.php" method="post" enctype="multipart/form-data">
     <table>
 
         <?php if (isset($_GET['id'])) { ?>

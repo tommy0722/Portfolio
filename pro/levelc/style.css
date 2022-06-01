@@ -1,0 +1,99 @@
+* {
+    font-family: '標楷體';
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.main {
+    width: 1024px;
+    height: 768px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1px auto;
+    border: lightgray solid 1px;
+
+}
+
+.main>* {
+    border: lightgray solid 1px;
+}
+
+.main>*:not(.aside, .section), .aside>*, .section>* {
+    border: lightgray solid 1px;
+}
+
+.top {
+    margin: 1px 12px 1px 6px;
+    width: 1000px;
+    height: 65px;
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    width: 215px;
+    height: calc(768px - 65px - 20px - 20px);
+    margin: 1px 1px 1px 6px;
+}
+
+.menu {
+    margin: 1px;
+    flex-basis: calc(100% - 25px);
+    font-weight: 500;
+}
+
+.menu>p {
+    font-size: 24px;
+    text-decoration: underline;
+    color: #FF00FF;
+}
+
+.menu>a {
+    display: block;
+    color: #000000;
+    font-size: 16px;
+    width: 200px;
+    height: 35px;
+    margin: 5px;
+    padding-top: 5px;
+    background: url(./material/menu1.png);
+}
+
+.menu>a:hover {
+    background: url(./material/menu2.png);
+}
+
+.update {
+    margin: 1px;
+    flex-basis: 25px;
+    color: #000000;
+    font-size: 16px;
+}
+
+.section {
+    margin: 1px 5px 1px 5px;
+    padding: 1px;
+    display: flex;
+    flex-direction: column;
+    width: 780px;
+    height: calc(768px - 65px - 20px -20px);
+}
+
+.marquee {
+    margin: 1px 1px;
+    flex-basis: 29px;
+    width: 772px;
+    font-size: 24px;
+    color: #0000FF;
+}
+
+.content {
+    flex-basis: calc(100% - 29px);
+}
+
+.footer {
+    margin: 1px 12px 1px 6px;
+    width: 1000px;
+    height: 20px;
+    font-size: 16px;
+}
