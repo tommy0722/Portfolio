@@ -1,4 +1,6 @@
-<?php include_once "./base.php"; ?>
+<?php include_once "./base.php"; 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,12 +62,16 @@
           <li><a href="./api/logout.php" class="nav-link scrollto"><i class="bi bi-box-arrow-left "></i><span>登出</span></a></li>
           <!-- <button onclick="location.href='./api/logout.php'" class="btn btn-danger" style="float: right;">登出</button> -->
         <?php
-        } else {
+        } elseif (isset($_SESSION['login'])){
         ?>
-          <!-- <button onclick="location.href='./front/login.php'" class="btn btn-primary" style="float: right;">登入</button> -->
-          <li><a href="./front/login.php" class="nav-link scrollto"><i class="bi bi-box-arrow-in-right"></i><span>登入</span></a></li>
+          <li><a href="./api/logout.php" class="nav-link scrollto"><i class="bi bi-box-arrow-left "></i><span>登出</span></a></li>
         <?php
-        }
+        }else {
+          ?>
+            <!-- <button onclick="location.href='./front/login.php'" class="btn btn-primary" style="float: right;">登入</button> -->
+            <li><a href="./front/login.php" class="nav-link scrollto"><i class="bi bi-box-arrow-in-right"></i><span>登入</span></a></li>
+          <?php
+          }
 
         ?>
       </ul>
@@ -617,19 +623,19 @@
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>住址:</h4>
-                <p>台北市北投區</p>
+                <p><?= $Abme->find(1)['local'] ?></p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>a3939889@gmail.com</p>
+                <p><?= $Abme->find(1)['email'] ?></p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>電話:</h4>
-                <p>0987654231</p>
+                <p><?= $Abme->find(1)['tel'] ?></p>
               </div>
 
             </div>
