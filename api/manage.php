@@ -2,6 +2,7 @@
 
 $db=new DB($_POST['table']);
 unset($_POST['table']);
+// dd($_POST);
 foreach($_POST['id'] as $index => $id){
   $db->find($id);
   if(isset($_POST['del']) && in_array($id,$_POST['del'])){

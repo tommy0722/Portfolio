@@ -22,7 +22,7 @@
             <tr>
                 <td><input type="text" name="name[]" value=""></td>
                 <td><input type='text' name='intr[]' value=""></td>
-                <td><input type="text" name="intr[]" value=""></td>
+                <td><input type="text" name="loca[]" value=""></td>
                 <td><select name='class[]' id='class'>
                         <option value="PHP">PHP</option>
                         <option value="HTML">HTML</option>
@@ -54,7 +54,7 @@
         $('.more').append(`<tr>
         <td><input type="text" name="id[]" value=""></td>
         <td><input type="text" name="intr[]" value=""></td>
-        <td><input type='text' name='intr[]' value=""></td>
+        <td><input type='text' name='loca[]' value=""></td>
         <td><select name='class[]' id='class'>
                 <option value="PHP">PHP</option>
                 <option value="HTML">HTML</option>

@@ -1,10 +1,14 @@
 <?php include_once "base.php"; ?>
 
-
+<style>
+    .name{
+        color: lightsteelblue;
+    }
+</style>
 <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
 <body>
-    
+
 
 <p class="t cent botli">基本資料</p>
     <form action="api/manage.php" method="post" enctype="multipart/form-data">

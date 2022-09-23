@@ -39,7 +39,9 @@
             width: 100%;
             height: 600px;
             opacity:0.7;
+            
         }
+
     </style>
 </head>
 
@@ -59,7 +61,7 @@
                 <div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
             </div>
         </div>
-        <div style="background-image: url('./assets/img/backendbk1.jpg');" class="backend">
+        <div style="background-image: url('./assets/img/back.jpg');" class="backend">
 
             <div class="title-back justify-content-center d-flex" style="position: relative;">
                 <div>

@@ -41,8 +41,10 @@
                                 }
                                 ?>
                             </select></td>
-                        <td><input type="checkbox" name="del[]" value="<?= $row['id'] ?>"><input type="hidden" name="id[]" value="<?= $row['id'] ?>"></td>
-                        <td><input type="button" onclick="op('#cover','#cvr','/s1100414/modle/pro.php?id=<?= $row['id'] ?>')" value="更新圖片"></td>
+                        <td><input type="checkbox" name="del[]" value="<?= $row['id'] ?>">
+                            <input type="hidden" name="id[]" value="<?= $row['id'] ?>">
+                        </td>
+                        <td><input type="button" onclick="op('#cover','#cvr','./modle/pro.php?id=<?= $row['id'] ?>')" value="更新圖片"></td>
                     </tr>
                 <?php }
                 ?>
@@ -56,8 +58,7 @@
                     <input type="button" onclick="more()" value="更多作品集">
                 <?php } ?>
 
-                <input type="hidden" name="id[]" value="<?= $row['id'] ?? '' ?>">
-                <!-- <input type="hidden" name="del[]" value="<?= $row['id'] ?? '' ?>"> -->
+
                 <input type="hidden" name="table" value="pro">
 
             </div>

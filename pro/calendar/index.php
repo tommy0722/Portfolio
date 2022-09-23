@@ -1,14 +1,15 @@
 <?php
 
 use function PHPSTORM_META\type;
-
+// $month=(int)date("m");
+// echo $month;
 $weekend = ["日", "一", "二", "三", "四", "五", "六"];
 if (isset($_GET['month'])) {
     $month = $_GET['month'];
     $years = $_GET['years'];
 } else {
-    $month = date("m");
-    $years = date("Y");
+    $month = (int)date("m");
+    $years = (int)date("Y");
 }
 $today=date("Y-m-d");
 
@@ -67,7 +68,7 @@ $Engmonth = [
     'November',
     'December'
 ];
-// echo "<h1 class='h1'>$Engmonth[$month]</h1>";
+// echo "<h1 class='h1'>$Engmonth[9]</h1>";
 ?>
 
 <!DOCTYPE html>
